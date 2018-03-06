@@ -1,0 +1,14 @@
+# Server configuration
+# server:
+  # port: 8080
+  # context-path: /kawaiizumi-ecommence
+  # tomcat:
+    # max-threads: 20
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+application.message: Kawaiizumi Web
