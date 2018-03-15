@@ -10,5 +10,19 @@ spring:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/kawaiizumi?useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver 
 
 application.message: Kawaiizumi Web

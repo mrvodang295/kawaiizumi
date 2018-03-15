@@ -13,6 +13,13 @@
 	JSTL URL: ${url}
 	<br>
 	Message: ${message}
+	<br>
+	<c:forEach items="${users}" var="user">
+		<span>${user.name}</span>
+		<span>-</span>
+		<span>${user.email}</span>
+		<br>
+	</c:forEach>
 </body>
 
 </html>
