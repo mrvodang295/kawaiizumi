@@ -20,7 +20,7 @@ spring:
         dialect: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
   datasource:
-    url: jdbc:mysql://172.30.79.147:3306/chickendb?useSSL=false
+    url: jdbc:mysql://mysql:3306/chickendb?useSSL=false
     username: admin
     password: admin
     driver-class-name: com.mysql.jdbc.Driver 
