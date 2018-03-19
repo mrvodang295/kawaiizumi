@@ -33,8 +33,7 @@ public class DashboardController {
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String dashboard(Map<String, Object> model) {
-		chickenRepositoryDAO.save(this.getUsers());
-		return "incubation";
+		return "bs-simple-admin/index";
 	}
 
 	@GetMapping("/")
@@ -46,9 +45,10 @@ public class DashboardController {
 		return "welcome";
 	}
 
-	@RequestMapping("/foo")
+	@RequestMapping("/incubation")
 	public String foo(Map<String, Object> model) {
-		throw new RuntimeException("Foo");
+		chickenRepositoryDAO.save(this.getUsers());
+		return "incubation";
 	}
 
 	private List<User> getUsers() {
