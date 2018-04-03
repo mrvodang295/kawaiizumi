@@ -25,26 +25,30 @@
 	</properties>
  
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		
 		<!-- Compile -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-		</dependency>
-		<!-- Provided -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-			<scope>provided</scope>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+		</dependency>
+
 		<!-- Test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -77,6 +81,23 @@
 		    <artifactId>hibernate-core</artifactId>
 		</dependency>
 		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+		<!--WebJars-->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>2.1.4</version>
+		</dependency>
 	</dependencies>
 	
 	<build>
@@ -85,6 +106,46 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<!-- minify and combine js/css -->
+            <plugin>
+                <groupId>com.samaxes.maven</groupId>
+                <artifactId>minify-maven-plugin</artifactId>
+                <version>1.7.4</version>
+                <executions>
+                    <execution>
+                        <id>default-minify</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <charset>UTF-8</charset>
+                            <cssSourceDir>../resources/static/assets/css</cssSourceDir>
+                            <cssSourceIncludes>
+                                <cssSourceInclude>**</cssSourceInclude>
+                            </cssSourceIncludes>
+                            <cssFinalFile>kawaiizumi.css</cssFinalFile>
+                            <jsSourceDir>../resources/static/assets/js</jsSourceDir>
+                            <jsSourceIncludes>
+                                <jsSourceInclude>**</jsSourceInclude>
+                            </jsSourceIncludes>
+                            <jsFinalFile>kawaiizumi.js</jsFinalFile>
+                            <jsEngine>CLOSURE</jsEngine>
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- exclude non minified resources-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <!-- <webXml>src\main\webapp\WEB-INF\web.xml</webXml>-->
+                    <warSourceExcludes>**/*.css,**/*.js</warSourceExcludes>
+                    <warSourceIncludes>**/*.min.css,**/*.min.js</warSourceIncludes>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
