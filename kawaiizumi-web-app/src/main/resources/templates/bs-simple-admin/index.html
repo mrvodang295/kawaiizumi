@@ -20,7 +20,7 @@
     <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
             th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
             
-   <link href="assets/css/kawaiizumi.min.css" rel="stylesheet"/>
+   <link th:href="@{assets/css/kawaiizumi.min.css}" rel="stylesheet"/>
     
 </head>
 <body>
@@ -467,7 +467,7 @@
       <!-- CUSTOM SCRIPTS -->
     <!-- <script src="assets/js/custom.js"></script> -->
     
-   <script src="assets/js/kawaiizumi.min.js"></script>
+   <script th:src="@{/assets/js/kawaiizumi.min.js}"></script>
    <script src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/js/bootstrap.min.js"
           th:scr="@{/webjars/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
 </body>

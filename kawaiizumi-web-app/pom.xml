@@ -115,16 +115,18 @@
                 <executions>
                     <execution>
                         <id>default-minify</id>
-                        <phase>package</phase>
+                        <phase>compile</phase>
                         <configuration>
                             <webappSourceDir>${basedir}/src/main/resources/</webappSourceDir>
                             <charset>UTF-8</charset>
                             <cssSourceDir>static/assets/css</cssSourceDir>
+                            <cssTargetDir>WEB-INF/classes/static/assets/css</cssTargetDir>
                             <cssSourceIncludes>
                                 <cssSourceInclude>**</cssSourceInclude>
                             </cssSourceIncludes>
                             <cssFinalFile>kawaiizumi.css</cssFinalFile>
                             <jsSourceDir>static/assets/js</jsSourceDir>
+                            <jsTargetDir>WEB-INF/classes/static/assets/js</jsTargetDir>
                             <jsSourceIncludes>
                                 <jsSourceInclude>**</jsSourceInclude>
                             </jsSourceIncludes>
