@@ -130,6 +130,9 @@
                             <jsSourceIncludes>
                                 <jsSourceInclude>**</jsSourceInclude>
                             </jsSourceIncludes>
+                            <jsSourceExcludes>
+                                <jsSourceExclude>html/integration.js</jsSourceExclude>
+                            </jsSourceExcludes>
                             <jsFinalFile>kawaiizumi.js</jsFinalFile>
                             <jsEngine>CLOSURE</jsEngine>
                         </configuration>
@@ -149,6 +152,35 @@
                     <warSourceIncludes>**/*.min.css,**/*.min.js</warSourceIncludes>
                 </configuration>
             </plugin>
+            
+            <!-- HTML compressor -->
+            <plugin>
+		        <groupId>com.tunyk.mvn.plugins.htmlcompressor</groupId>
+		        <artifactId>htmlcompressor-maven-plugin</artifactId>
+		        <version>1.3</version>
+		        <executions>
+		            <execution>
+		                <id>compress-html</id>
+		                <phase>prepare-package</phase>
+		                <goals>
+		                    <goal>html</goal>
+		                </goals>
+		                <configuration>
+		                	<goalPrefix>htmlcompressor1</goalPrefix>
+				            <enabled>true</enabled>
+				            <removeComments>true</removeComments>
+				            <encoding>utf-8</encoding>
+		                    <srcFolder>${basedir}/src/main/resources</srcFolder>
+		                    <targetFolder>${project.build.directory}/classes</targetFolder>
+		                    <fileExt>
+		                        <ext>html</ext>
+		                    </fileExt>
+		                    <!-- <compressCss>true</compressCss> -->
+                    		<!-- <compressJavaScript>true</compressJavaScript> -->
+		                </configuration>
+		            </execution>
+		        </executions>
+		    </plugin>
 		</plugins>
 	</build>
 
