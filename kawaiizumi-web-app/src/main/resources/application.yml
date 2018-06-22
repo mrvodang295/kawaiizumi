@@ -15,10 +15,21 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
+# Using MySQL Server for deployment
   datasource:
     url: jdbc:mysql://localhost:3306/kawaiizumi?useSSL=false
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver 
+    driver-class-name: com.mysql.jdbc.Driver
+# Using H2 Server for development
+#  datasource:
+#    url:  jdbc:h2:tcp://localhost/~/kawaiizumi
+#    username: sa
+#    password: 
+#    driverClassName:  org.h2.Driver
 
-application.message: Kawaiizumi Web
+#Message Configuration
+kawaiizumi:
+  session:
+    chicken-management:
+      title: kawaiizumi.chicken-management-title

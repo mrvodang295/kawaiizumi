@@ -9,12 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.izumi.product.kawaiizumiwebapp.ApplicationConfiguration;
 import com.izumi.product.model.User;
 import com.izumi.product.repository.ChickenRepositoryDAO;
 
@@ -28,8 +30,11 @@ public class DashboardController {
 	@Autowired
 	private ChickenRepositoryDAO chickenRepositoryDAO;
 
-	@Value("${application.message:Hello World}")
-	private String message = "Hello World";
+	@Autowired
+	private ApplicationConfiguration applicationConfiguration;
+	
+	@Autowired
+	private MessageSource messageSource;
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String dashboard(Map<String, Object> model) {
@@ -39,7 +44,7 @@ public class DashboardController {
 	@GetMapping("/")
 	public String welcome(Map<String, Object> model) {
 		model.put("time", new Date());
-		model.put("message", this.message);
+		model.put("message", messageSource.getMessage(applicationConfiguration.getChickenManagementTitle(), null, LocaleContextHolder.getLocale()));
 		model.put("users", chickenRepositoryDAO.findAll());
 
 		return "welcome";
