@@ -17,9 +17,9 @@ spring:
     show-sql: true
 # Using MySQL Server for deployment
   datasource:
-    url: jdbc:mysql://localhost:3306/kawaiizumi?useSSL=false
-    username: root
-    password: root
+    url: jdbc:mysql://mysql:3306/chickendb?useSSL=false
+    username: admin
+    password: admin
     driver-class-name: com.mysql.jdbc.Driver
 # Using H2 Server for development
 #  datasource:
