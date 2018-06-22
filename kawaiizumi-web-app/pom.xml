@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.izumi.product</groupId>
-	<artifactId>kawaiizumi-web-app</artifactId>
+	<artifactId>kawaiizumi-kitty</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 
-	<name>kawaiizumi-web-app</name>
+	<name>kawaiizumi-kitty</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -166,7 +166,6 @@
 						**/minify/kawaiizumi-1.0.css,
 						**/minify/kawaiizumi-1.0.js,
 					</packagingExcludes>
-					<warName>kawaiizumi-kitty</warName>
                 </configuration>
             </plugin>
             
