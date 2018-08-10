@@ -3,7 +3,6 @@
  */
 package com.izumi.product.model;
 
-import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -19,11 +18,7 @@ import lombok.Data;
  */
 @Data
 @Embeddable
-public class UUIDBase implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4460254090941996234L;
+public class UUIDBase {
 
 	/*
 	 * The UUID code for mapping

@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.izumi.product.kawaiizumiwebapp.ApplicationConfiguration;
 import com.izumi.product.model.Chicken;
 import com.izumi.product.model.Parent;
+import com.izumi.product.model.TakingEgg;
 import com.izumi.product.model.UUIDBase;
 import com.izumi.product.model.User;
 import com.izumi.product.repository.ChickenRepositoryDAO;
@@ -109,11 +110,15 @@ public class DashboardController {
 		chick1.setGender(true);
 		chick1.setType("Take Egg");
 		chick1.setWeekNo(16);
-		chick1.setPeriodOfEgg(1);
 		Parent parent1 = new Parent();
 		chick1.setParent(parent1);
 		parent1.setFatherCode("COCKS_123");
 		parent1.setMotherCode("HEN_123");
+		
+		TakingEgg eggs = new TakingEgg();
+		eggs.setNoOfEgg(10);
+		chick1.setTakingEgg(Arrays.asList(eggs));
+		eggs.setChickNoRef(chick1);
 
 		Chicken chick2 = new Chicken();
 		chick2.setChickNo("456");
@@ -123,7 +128,6 @@ public class DashboardController {
 		chick2.setGender(false);
 		chick2.setType("Take meat");
 		chick2.setWeekNo(16);
-		chick2.setPeriodOfEgg(1);
 		Parent parent2 = new Parent();
 		chick2.setParent(parent2);
 		parent2.setFatherCode("COCKS_345");
