@@ -20,7 +20,7 @@ import com.izumi.product.model.Chicken;
  */
 @RepositoryRestResource(collectionResourceRel = "chickens", path = "chickens")
 @Transactional
-public interface ChickenRepositoryDAO<T extends Chicken> extends PagingAndSortingRepository<T, Long> {
+public interface ChickenRepository<T extends Chicken> extends PagingAndSortingRepository<T, Long> {
 
 	@RestResource(rel = "chickens", path = "chickens")
 	@Query(value = "Select chicken From Chicken chicken")

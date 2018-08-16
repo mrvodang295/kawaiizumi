@@ -5,19 +5,12 @@ package com.izumi.product.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import org.hibernate.annotations.GenericGenerator;
 
 import com.izumi.product.constant.ChickenConstants;
 
@@ -33,14 +26,6 @@ import lombok.EqualsAndHashCode;
 @Table(name = ChickenConstants.TABLE_CHICKEN)
 @EqualsAndHashCode(callSuper = false)
 public class Chicken extends UUIDBase {
-
-	@Id
-	@GeneratedValue(generator = ChickenConstants.UUID2)
-	@GenericGenerator(name = ChickenConstants.UUID2, strategy = ChickenConstants.UUID2)
-	@Override
-	public UUID getUuid() {
-		return super.getUuid();
-	}
 
 	private String chickNo; // The identify code of chicken - COCKS_XXX/HEN_XXX/CHICK_XXX
 
@@ -59,13 +44,9 @@ public class Chicken extends UUIDBase {
 	@Embedded
 	private Parent parent; // The parent of chicken - refer to chickNo
 
-	@Transient
-	private List<TakingEgg> takingEgg = new ArrayList<>();
-
+//	@Transient
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "chickNoRef", orphanRemoval = true)
-	public List<TakingEgg> getTakingEgg() {
-		return takingEgg;
-	}
+	private List<TakingEgg> takingEgg	 = new ArrayList<>();
 
 	@Override
 	public String toString() {

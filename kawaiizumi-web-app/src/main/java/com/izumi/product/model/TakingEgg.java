@@ -3,18 +3,14 @@
  */
 package com.izumi.product.model;
 
-import java.util.UUID;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.izumi.product.constant.ChickenConstants;
 
 import lombok.Data;
@@ -30,14 +26,6 @@ import lombok.EqualsAndHashCode;
 @Table(name = ChickenConstants.TABLE_CHICKEN_TAKING_EGG)
 public class TakingEgg extends UUIDBase {
 
-	@Id
-	@GeneratedValue(generator = ChickenConstants.UUID2)
-	@GenericGenerator(name = ChickenConstants.UUID2, strategy = ChickenConstants.UUID2)
-	@Override
-	public UUID getUuid() {
-		return super.getUuid();
-	}
-
 	private int periodOfEgg; // The period of time that hen produces egg
 
 	private long spawningDay; // The day of first egg born
@@ -50,16 +38,8 @@ public class TakingEgg extends UUIDBase {
 
 	private int noOfEgg; // The number of eggs was born
 
-	// private UUID chickNoRef; // The foreign key of hen refers to Chicken
-
-	private Chicken chickNoRef;
-
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "chickNoRef_uuid")
-	@ManyToOne(cascade = CascadeType.ALL, targetEntity = Chicken.class)
+	@JsonIgnore // Ignore due to it's just a reference key to parent object 
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "chickNoRef")
-	public Chicken getChickNoRef() {
-		return chickNoRef;
-	}
-
+	private Chicken chickNoRef;	// The foreign key of hen refers to Chicken
 }
