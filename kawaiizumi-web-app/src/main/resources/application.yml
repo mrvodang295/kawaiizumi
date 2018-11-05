@@ -1,9 +1,21 @@
 # Server configuration
-# server:
-  # port: 8080
-  # context-path: /kawaiizumi-ecommence
-  # tomcat:
-    # max-threads: 20
+server:
+  port: 8181
+  context-path: /kawaiizumi-kitty
+  request-mapping:
+    chicken-management:
+      root-api: chickens
+      dashboard-api: dashboard
+    garden-management: garden
+  tomcat:
+    max-threads: 20
+
+# Add log file
+logging:
+  file: D:\\logs\\application-kawaiizumi.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
 
 spring:
   jpa:
@@ -16,17 +28,17 @@ spring:
         dialect: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
 # Using MySQL Server for deployment
-  datasource:
-    url: jdbc:mysql://mysql:3306/chickendb?useSSL=false
-    username: admin
-    password: admin
-    driver-class-name: com.mysql.jdbc.Driver
-# Using H2 Server for development
 #  datasource:
-#    url:  jdbc:h2:tcp://localhost/~/kawaiizumi
-#    username: sa
-#    password: 
-#    driverClassName:  org.h2.Driver
+#    url: jdbc:mysql://mysql:3306/chickendb?useSSL=false
+#    username: admin
+#    password: admin
+#    driver-class-name: com.mysql.jdbc.Driver
+# Using H2 Server for development
+  datasource:
+    url:  jdbc:h2:tcp://localhost/~/kawaiizumi
+    username: sa
+    password: 
+    driverClassName:  org.h2.Driver
 
 #Message Configuration
 kawaiizumi:

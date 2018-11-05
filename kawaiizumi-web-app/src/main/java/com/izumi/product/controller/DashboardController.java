@@ -33,7 +33,7 @@ import com.izumi.product.service.TakingEggService;
  *
  */
 @Controller
-@RequestMapping(value = "/chickens")
+@RequestMapping(value = "${server.request-mapping.chicken-management.root-api}")
 public class DashboardController {
 
 	@Autowired
@@ -48,13 +48,15 @@ public class DashboardController {
 	@Autowired
 	private TakingEggService<TakingEgg> takingEggService;
 
-	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+	@RequestMapping(value = "${server.request-mapping.chicken-management.dashboard-api}", method = RequestMethod.GET)
 	public String dashboard(Map<String, Object> model) {
 		return "bs-simple-admin/index";
 	}
 
-	@GetMapping("/")
+	@GetMapping
 	public String welcome(Map<String, Object> model) {
+		String a = null;
+		a.toString();
 		model.put("time", new Date());
 		model.put("message", messageSource.getMessage(applicationConfiguration.getChickenManagementTitle(), null,
 				LocaleContextHolder.getLocale()));
