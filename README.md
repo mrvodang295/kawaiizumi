@@ -1,2 +1,2 @@
 # kawaiizumi-web-app
-A simple web application
+A simple web application using springboot and angular
