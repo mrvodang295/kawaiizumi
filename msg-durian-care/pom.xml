@@ -5,11 +5,11 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kawaiizumi.services</groupId>
-	<artifactId>msg-chicken-management</artifactId>
+	<artifactId>msg-durian-care</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>msg-chicken-management</name>
+	<name>msg-durian-care</name>
 	<description>Demo project for Spring Boot</description>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
