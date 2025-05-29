@@ -2,19 +2,28 @@ package com.kawaiizumi.services.duriancare.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.kawaiizumi.services.duriancare.model.DurianTree;
 import com.kawaiizumi.services.duriancare.repository.DurianTreeRepository;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RequiredArgsConstructor
 @RestController
-@CrossOrigin(origins = "https://durian-care.onrender.com")
 @RequestMapping("/api/trees")
 public class DurianTreeController {
 
-    @Autowired
-    private DurianTreeRepository repository;
+    private final DurianTreeRepository repository;
 
     @PostMapping
     public DurianTree create(@RequestBody DurianTree tree) {
@@ -23,6 +32,7 @@ public class DurianTreeController {
 
     @GetMapping
     public List<DurianTree> getAll() {
+    	log.info("Func: GetAll(...) is running ... ");
         return repository.findAll();
     }
 
