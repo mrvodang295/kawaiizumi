@@ -1,4 +1,4 @@
-FROM maven:3.8.7-openjdk-8
+FROM maven:3.8.8-eclipse-temurin-17
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
