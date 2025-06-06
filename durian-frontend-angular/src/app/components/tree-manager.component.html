@@ -1,0 +1,18 @@
+<div style="max-width: 600px; margin: auto;">
+  <h2>🌳 Danh sách cây sầu riêng</h2>
+
+  <form (ngSubmit)="addTree()">
+    <input [(ngModel)]="newTree.treeId" name="treeId" placeholder="Mã cây" required /><br />
+    <input [(ngModel)]="newTree.variety" name="variety" placeholder="Giống" required /><br />
+    <input [(ngModel)]="newTree.location" name="location" placeholder="Vị trí" required /><br />
+    <input [(ngModel)]="newTree.plantedDate" name="plantedDate" type="date" required /><br />
+    <input [(ngModel)]="newTree.status" name="status" placeholder="Trạng thái" required /><br />
+    <button type="submit">➕ Thêm cây</button>
+  </form>
+
+  <ul>
+    <li *ngFor="let tree of trees">
+      🌱 <strong>{{ tree.treeId }}</strong> - {{ tree.variety }} tại {{ tree.location }}
+    </li>
+  </ul>
+</div>
